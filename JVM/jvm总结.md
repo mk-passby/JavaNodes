@@ -8,7 +8,7 @@ tags: jvm
 
 #### JVM运行时数据区
 
-![img](jvm总结/1.png)
+![img](jvm/1.png)
 
 JVM运行时数据区由以下组成：
 
@@ -24,7 +24,7 @@ Heap：堆内存（存放对象实例）
 
 #### java内存模型
 
-![img](jvm总结/2.png)
+![img](jvm\2.png)
 
 由于对象的生命周期不一样，出现了分代，98%的对象在minorGC的时候会被回收掉
 
@@ -36,7 +36,7 @@ Heap：堆内存（存放对象实例）
 
 #### 虚拟机栈
 
-![](jvm总结/虚拟机栈.png)
+![](jvm\虚拟机栈.png)
 
 
 
@@ -109,7 +109,7 @@ Error: A fatal exception has occurred. Program will exit.
 
 
 
-![1589121656223](jvm总结\对象组成.png)
+![1589121656223](jvm\对象组成.png)
 
 
 
@@ -209,7 +209,7 @@ JVM调优最终目的减小垃圾回收
 
 ​		标记-整理算法
 
-![img](jvm总结\3.png)
+![img](jvm\3.png)
 
 ​	垃圾收集器
 
@@ -263,7 +263,7 @@ JVM调优最终目的减小垃圾回收
 
 
 
-![img](jvm总结\4.png)
+![img](jvm\4.png)
 
 ​		
 
@@ -281,7 +281,7 @@ JVM调优最终目的减小垃圾回收
 
 ​	-XX:+PrintCommandLineFlags
 
-![img](jvm总结\5.jpg)
+![img](jvm\5.jpg)
 
 ​	server client
 
@@ -397,11 +397,11 @@ java -Xms128m -Xmx128m -verbose:gc -Xloggc:/home/administrator/james/gc.log  -XX
 
 ​		
 
-![img](jvm总结\6.jpg)
+![img](jvm\6.jpg)
 
 
 
-![img](jvm总结\7.jpg)
+![img](jvm\7.jpg)
 
 #### JVM问题
 
