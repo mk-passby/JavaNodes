@@ -1,5 +1,10 @@
 package com.learn.algs;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -27,9 +32,10 @@ public class BinaryTree {
 //        System.out.println("后序递归遍历");
 //        afterOrderTraverse1(treeNode);
 //------------------------------------------------
-        System.out.println("前序非递归遍历");
-        preOrderTraverse2(treeNode);
-
+//        System.out.println("前序非递归遍历");
+//        preOrderTraverse2(treeNode);
+        System.out.println("中序非递归遍历");
+        afterOrderTraverse2(treeNode);
     }
 
     /*
@@ -65,6 +71,62 @@ public class BinaryTree {
         }
     }
 
+    public static void preOrderTraverse2(TreeNode treeNode) {
+        Stack<TreeNode> stack = new Stack();
+        TreeNode pNode = treeNode;
+        while (pNode != null || !stack.isEmpty()) {
+            if (pNode != null) {
+                System.out.print(pNode.value + "  ");
+                stack.push(pNode);
+                pNode = pNode.left;
+            }
+            else { //pNode == null && !stack.isEmpty()
+                TreeNode node = stack.pop();
+                pNode = node.right;
+            }
+        }
+    }
+
+    public static void middleOrderTraverse2(TreeNode treeNode) {
+        Stack<TreeNode> stack = new Stack();
+        TreeNode pNode = treeNode;
+        while (pNode != null || !stack.isEmpty()) {
+            if (pNode != null) {
+                stack.push(pNode);
+                pNode = pNode.left;
+            }
+            else { //pNode == null && !stack.isEmpty()
+                TreeNode node = stack.pop();
+                System.out.print(node.value + "  ");
+                pNode = node.right;
+            }
+        }
+    }
+
+    /*
+    利用反转，为了得到"左->右->根"，先得到"根->右->左"
+     */
+    public static void afterOrderTraverse2(TreeNode treeNode) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack();
+        stack.push(treeNode);
+        while (!stack.isEmpty()) {
+            TreeNode treeNodeStack = stack.pop();
+            if (treeNodeStack != null) {
+                System.out.println(treeNodeStack.value);
+                list.add(treeNodeStack.value);
+            }
+            if (treeNodeStack.left != null) {
+                stack.push(treeNodeStack.left);
+            }
+            if (treeNodeStack.right != null) {
+                stack.push(treeNodeStack.right);
+            }
+        }
+        Collections.reverse(list);
+        System.out.println(Arrays.toString(list.toArray()));
+    }
+
 
     /*
     非递归实现前序遍历
@@ -77,24 +139,25 @@ public class BinaryTree {
     5.如果右子树不为null，右子树入栈
     6.如果左子树不为null，左子树入栈
     注意第5点和第6点，因为要先遍历左子树，需要右子树先入栈
+
+    //缺陷：只能处理前序，中序和后序很难处理
      */
-    public static void preOrderTraverse2(TreeNode treeNode) {
+    public static void preOrderTraverse3(TreeNode treeNode) {
         Stack<TreeNode> stack = new Stack();
         stack.push(treeNode);
         while (!stack.isEmpty()) {
             TreeNode treeNodeStack = stack.pop();
-            if (treeNodeStack != null) {
-                System.out.println(treeNodeStack.value);
-            }
             if (treeNodeStack.right != null) {
                 stack.push(treeNodeStack.right);
+            }
+            if (treeNodeStack != null) {
+                System.out.println(treeNodeStack.value);
             }
             if (treeNodeStack.left != null) {
                 stack.push(treeNodeStack.left);
             }
         }
     }
-
 
     private static TreeNode getTreeNode() {
         TreeNode treeNode8 = new TreeNode(null, null, 8);
